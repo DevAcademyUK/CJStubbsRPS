@@ -42,4 +42,24 @@ public class dog {
     public String beHuman(String name, int age, String breed) {
         return "Hello Human, i'm" + name + " and I am a " + age + " year old " + breed + ", What breed are you?";
     }
+    public void createDog() {
+        System.out.println("what is your dogs breed");
+        String name = myScanner.nextline();
+        System.out.println("how big is the dog?");
+        String size = myScanner.nextLine()
+        System.out.println("how old is the dog?");
+        int age = myScanner.nextInt();
+        System.out.println("what breed is the dog?");
+        String breed = myScanner.nextLine();
+        dog myDog = new dog(name, size, age, breed);
+
+        myDog.bark(size);
+        myDog.play(breed);
+        myDog.beHuman(name, age, breed);
+    }
+
+
+
+
+    }
 }
