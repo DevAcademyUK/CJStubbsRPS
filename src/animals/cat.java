@@ -2,17 +2,22 @@ package animals;
 
 import java.util.Scanner;
 
-public class cat {
+public class cat extends animal{
 
-    private String name;
-    private int age;
-    private String colour;
-    private String breed;
-    private String size;
-    private Character gender;
-    private Boolean chipped;
-    private Boolean vaccinated;
-    private Scanner myScanner;
+    cat(String name, String size, int age, String breed) {
+        super(name, size, age, breed);
+    }
+
+    public void main0(String[] args) {
+        createAnimal myCreator = new createAnimal();
+        myCreator.getAnimalType();
+
+
+    String colour;
+    Character gender;
+    Boolean chipped;
+    Boolean vaccinated;
+    Scanner myScanner;
 
     private cat(String name, String size, int age, String breed) {
         this.name = name;
@@ -25,7 +30,7 @@ public class cat {
         this.vaccinated = vaccinated;
     }
 
-
+/*
     private void createCat() {
         System.out.println("What is your dogs name?");
         String name = myScanner.nextLine();
@@ -68,4 +73,5 @@ public class cat {
         myDog.bark(size);
         myDog.play(breed);
         myDog.beHuman(name, age, breed);
+    */
     }

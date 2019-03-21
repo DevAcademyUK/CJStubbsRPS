@@ -1,10 +1,20 @@
 package animals;
 
+import java.util.Scanner;
+
+Scanner myScanner = new Scanner(System.in);
+
+public void main(String[] args) {
+        createAnimal create = new createAnimal();
+        create.getAnimalType();
+        
 public class dog {
     public String name;
     public String size;
     public int age;
     public String breed;
+
+
 
     public dog(String name, String size, int age, String breed) {
         this.name = name;
@@ -13,11 +23,11 @@ public class dog {
         this.breed = breed;
     }
 
-    public String bark(String size) {
+    public String bark() {
         String bark = " ";
-        if (size.equalsIgnoreCase("small")) {
+        if (this.size.equalsIgnoreCase("small")) {
             bark = "yap yap yap";
-        } else if (size.equalsIgnoreCase("medium")) {
+        } else if (this.size.equalsIgnoreCase("medium")) {
             bark = "woof woof";
         } else {
             bark = "WOOF! WOOF!";
@@ -42,7 +52,7 @@ public class dog {
     public String beHuman(String name, int age, String breed) {
         return "Hello Human, i'm" + name + " and I am a " + age + " year old " + breed + ", What breed are you?";
     }
-    public void createDog() {
+    private void createDog() {
         System.out.println("what is your dogs breed");
         String name = myScanner.nextline();
         System.out.println("how big is the dog?");
@@ -62,4 +72,4 @@ public class dog {
 
 
     }
-}
+

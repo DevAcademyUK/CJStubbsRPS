@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class createAnimal {
     Scanner myScanner = new Scanner(System.in);
 
-    private void getAnimalType (){
+    void getAnimalType(){
         System .out.println("What animal would you like to create?");
         String animal = myScanner.nextLine();
 
@@ -27,5 +27,10 @@ else{
     private void createCat() {
     }
 
+    public static void main(String[] args) {
+        createAnimal myCreator = new createAnimal();
+                myCreator.getAnimalType();
+
+    }
 
 }
