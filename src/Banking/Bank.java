@@ -1,9 +1,9 @@
-package Banking;
+/*package Banking;
 
 import java.util.Scanner;
 
 public class Bank {
-    public static Scanner myScanner= new Scanner (System.in);
+    public static Scanner myScanner = new Scanner(System.in);
     String userId;
     String pin;
 
@@ -16,15 +16,19 @@ public class Bank {
       would you like to withdraw transfer or log out?
        */
 
-
-    public static void main(String[] args) {
+/*
+    public static void main(String[] User) {
         Bank create = new Bank();
         create.getAccountDetails();
+  }
+
+    private void getAccountDetails() {
     }
 
-    boolean checkAccount(String id, String pin){
-        return true ;
+    boolean checkAccount(String id, String pin) {
+        return true;
     }
+}
 
     public void getAccountDetails() {
 
@@ -35,7 +39,7 @@ public class Bank {
         String pin = myScanner.nextLine();
         if (checkAccount(userId,pin))
         {
-            user Jeff= new user() ;
+            session Jeff= new session() ;
          Jeff.getAccountType();
         }
 
@@ -48,7 +52,7 @@ public class Bank {
 
 
 
-
+  */
 
 
 

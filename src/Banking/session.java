@@ -1,14 +1,16 @@
-package Banking;
+/*package Banking;
+
+import java.util.Scanner;
 
 import static Banking.Bank.myScanner;
 
-public class user {
+public class session {
 
-    Accounts current = new Accounts();
-    Accounts savings = new Accounts();
-    Accounts joint = new Accounts();
+    Account current = new Account();
+    Account savings = new Account();
+    Account joint = new Account();
 
-    void accountFunction(Accounts acc) {
+    void accountFunction(Account acc) {
         String accName = "";
         if (acc == this.current) {
             accName = "Current";
@@ -21,6 +23,17 @@ public class user {
 
         System.out.println("What would you like to do with your account?" +
                 " Your options are: Withdraw, Deposit or Transfer?");
+
+       // Scanner myScanner = new Scanner(System.in);
+        //String Withdraw;
+        //String Transfer;
+        //String Deposit;
+        //String account;
+
+       // if (account.equals)("withdraw")
+
+
+                //im here
 
 
     }
@@ -48,3 +61,4 @@ public class user {
 
 
 }
+*/

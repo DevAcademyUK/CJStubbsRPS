@@ -1,10 +1,8 @@
 package Banking;
 
-public class Accounts {
+public class Account {
 
 public double balance = 100.00;
-
-
 
 
 }
