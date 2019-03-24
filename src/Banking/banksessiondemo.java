@@ -129,8 +129,8 @@ return amount;
         System.out.println("How much would you like to Transfer?");
         double money = myScanner.nextDouble();
         Account source = new Account();
-        source.balance = source.balance - amount;
-        source.balance = source.balance + amount;
+        source.balance = source.balance - money;
+        source.balance = source.balance + money;
         System.out.println("Your new balance is: £" + source.balance);
         return transfer(amount);
     }
