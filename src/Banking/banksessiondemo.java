@@ -30,7 +30,8 @@ and then the Scanner is taking the users input
         if (userId.equals(Jeff.userId) && pin.equals(Jeff.pinId)) {
             getInput();
         } else {
-            System.out.println("Invalid details");
+            System.out.println("Invalid details, please try again.");
+            logon();
         }
 
     }
@@ -57,7 +58,7 @@ and then the Scanner is taking the users input
 
             default:
                 System.out.println("invalid command, please try again.");
-
+                getInput();
         }
     }
 
@@ -83,57 +84,70 @@ and then the Scanner is taking the users input
 
         if (transaction.equalsIgnoreCase("deposit")) {
 
-            deposit(amount);
+            deposit();
+
+
         } else if (transaction.equalsIgnoreCase("withdraw")) {
 
-            withdraw(amount);
+            withdraw();
         } else if (transaction.equalsIgnoreCase("transfer")) {
 
-            transfer(amount);
+            transfer();
         }
     }
 
-    private double deposit(double amount) {
+    private void deposit() {
         System.out.println("How much would you like to deposit?");
-        double money = myScanner.nextDouble();
+        double money = Double.parseDouble(myScanner.nextLine());
         Account acc = new Account();
         acc.balance = acc.balance + money;
         System.out.println("Your new balance is: £" + acc.balance);
-        System.out.println("What would you like to do next? Log out or continue with another Transaction?");
-        String answerlog = myScanner.nextLine();
-        if (answerlog.equalsIgnoreCase("logout")) {
-            logon();
-        } else if (answerlog.equalsIgnoreCase("another transaction")) {
-            getInput();
 
-        } else {
-            System.out.println("Invalid input, please choose between 'log out' or 'another transaction'.");
-
-
-
-        }
-return amount;
-
+        nextStage();
     }
 
-    private double withdraw(double amount) {
+    private void withdraw() {
         System.out.println("How much would you like to Withdraw?");
-        double money = myScanner.nextDouble();
+        double money = Double.parseDouble(myScanner.nextLine());
         Account acc = new Account();
         acc.balance = acc.balance - money;
         System.out.println("Your new balance is: £" + acc.balance);
-        return amount;
+
+        nextStage();
     }
 
-    private double transfer(double amount) {
+
+    private void transfer() {
         System.out.println("How much would you like to Transfer?");
-        double money = myScanner.nextDouble();
+        double money = Double.parseDouble(myScanner.nextLine());
         Account source = new Account();
         source.balance = source.balance - money;
         source.balance = source.balance + money;
         System.out.println("Your new balance is: £" + source.balance);
-        return transfer(amount);
+        nextStage();
     }
+
+    private void nextStage() {
+        System.out.println("What would you like to do next? Log out or continue with another Transaction?");
+        String answerLog = myScanner.nextLine();
+
+        if (answerLog.equalsIgnoreCase("log out")) {
+            logon();
+
+        } else if (answerLog.equalsIgnoreCase("another transaction")) {
+            getInput();
+
+        } else {
+            System.out.println("Invalid input, please choose between 'log out' or 'another transaction'.");
+            nextStage();
+        }
+    }
+
+
 }
+
+
+
+
 
 
