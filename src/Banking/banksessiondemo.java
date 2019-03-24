@@ -3,9 +3,14 @@ package Banking;
 import java.util.Scanner;
 
 public class banksessiondemo {
+
     double amount;
     private User Jeff = new User();
     Scanner myScanner = new Scanner(System.in);
+
+    private double cAccBal;
+    private double jAccBal;
+    private double sAccBal;
 
     /*private is defining the access modifier so where this class can be accessed throughout it's current contatiner
 User Jeff is a variable being pulled through from the Account class we have created. this is creating Jeff as a client
@@ -38,7 +43,7 @@ and then the Scanner is taking the users input
 
     public void getInput() {
         System.out.println("What account would you like to access today?\n"
-                + "options you currently have are joint,current and savings or exit");
+                + "options you currently have are joint,current and savings or make a transfer or exit");
 
         String input = myScanner.nextLine().toLowerCase();
         if (input.equals("exit")) {
@@ -55,6 +60,9 @@ and then the Scanner is taking the users input
             case "joint":
                 accountFunction(Jeff.joint);
                 break;
+
+            case"transfer":
+                transfer();
 
             default:
                 System.out.println("invalid command, please try again.");
@@ -79,7 +87,7 @@ and then the Scanner is taking the users input
 
     void getTransactionType() {
         System.out.println("What would you like to do with your account?" +
-                " Your options are: Withdraw, Deposit or Transfer?");
+                " Your options are: Withdraw or Deposit");
         String transaction = myScanner.nextLine();
 
         if (transaction.equalsIgnoreCase("deposit")) {
@@ -90,9 +98,6 @@ and then the Scanner is taking the users input
         } else if (transaction.equalsIgnoreCase("withdraw")) {
 
             withdraw();
-        } else if (transaction.equalsIgnoreCase("transfer")) {
-
-            transfer();
         }
     }
 
@@ -118,14 +123,55 @@ and then the Scanner is taking the users input
 
 
     private void transfer() {
-        System.out.println("How much would you like to Transfer?");
-        double money = Double.parseDouble(myScanner.nextLine());
-        Account source = new Account();
-        source.balance = source.balance - money;
-        source.balance = source.balance + money;
-        System.out.println("Your new balance is: £" + source.balance);
-        nextStage();
+        System.out.println("Which account would you like to transfer funds from?");
+        String source = myScanner.nextLine();
+        System.out.println("Which account would you like to transfer funds to?");
+        String destination = myScanner.nextLine();
+        System.out.println("How much would you like to transfer?");
+        double amount = Double.parseDouble(myScanner.nextLine());
+
+        if (source.equalsIgnoreCase("Current")) {
+            if (cAccBal >= amount) {
+                if (destination.equalsIgnoreCase("Joint")) {
+                    cAccBal += amount;
+                    cAccBal -= amount;
+                } else if (destination.equalsIgnoreCase("Savings")) {
+                    sAccBal += amount;
+                    cAccBal -= amount;
+                } else {
+                    System.out.println("Invalid Destination account");
+
+                }
+            } else if (source.equalsIgnoreCase("Joint")) {
+                if (jAccBal >= amount) {
+                    if (destination.equalsIgnoreCase("Current")) {
+                        cAccBal += amount;
+                        jAccBal -= amount;
+                    } else if (destination.equalsIgnoreCase("Savings")) {
+                        sAccBal += amount;
+                        jAccBal -= amount;
+                    } else {
+                        System.out.println("Invalid destination account");
+                    }
+                }
+            } else if (source.equalsIgnoreCase("Savings")) {
+                if (sAccBal >= amount) {
+                    if (destination.equalsIgnoreCase("Current")) {
+                        cAccBal += amount;
+                        sAccBal -= amount;
+                    } else if (destination.equalsIgnoreCase("Joint")) {
+                        jAccBal += amount;
+                        sAccBal -= amount;
+                    } else {
+                        System.out.println("Invalid destination account");
+                    }
+                }
+            } else {
+                System.out.println("Invalid source account");
+            }
+        }
     }
+
 
     private void nextStage() {
         System.out.println("What would you like to do next? Log out or continue with another Transaction?");
