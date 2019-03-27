@@ -8,9 +8,9 @@ public class banksessiondemo {
     private User Jeff = new User();
     Scanner myScanner = new Scanner(System.in);
 
-    private double cAccBal;
-    private double jAccBal;
-    private double sAccBal;
+    public double cAccBal = 0;
+    public double jAccBal = 0;
+    public double sAccBal = 0;
 
     /*private is defining the access modifier so where this class can be accessed throughout it's current contatiner
 User Jeff is a variable being pulled through from the Account class we have created. this is creating Jeff as a client
@@ -61,7 +61,7 @@ and then the Scanner is taking the users input
                 accountFunction(Jeff.joint);
                 break;
 
-            case"transfer":
+            case "transfer":
                 transfer();
 
             default:
@@ -130,14 +130,16 @@ and then the Scanner is taking the users input
         System.out.println("How much would you like to transfer?");
         double amount = Double.parseDouble(myScanner.nextLine());
 
-        if (source.equalsIgnoreCase("Current")) {
+        if (source.equalsIgnoreCase("current")) {
             if (cAccBal >= amount) {
                 if (destination.equalsIgnoreCase("Joint")) {
-                    cAccBal += amount;
+                    jAccBal += amount;
                     cAccBal -= amount;
+                    System.out.println(cAccBal);
                 } else if (destination.equalsIgnoreCase("Savings")) {
                     sAccBal += amount;
                     cAccBal -= amount;
+
                 } else {
                     System.out.println("Invalid Destination account");
 
@@ -169,7 +171,9 @@ and then the Scanner is taking the users input
             } else {
                 System.out.println("Invalid source account");
             }
+            nextStage();
         }
+
     }
 
 
