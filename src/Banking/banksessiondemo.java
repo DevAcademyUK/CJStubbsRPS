@@ -144,7 +144,8 @@ and then the Scanner is taking the users input
                     System.out.println("Invalid Destination account");
 
                 }
-            } else if (source.equalsIgnoreCase("Joint")) {
+            }
+            else if (source.equalsIgnoreCase("Joint")) {
                 if (jAccBal >= amount) {
                     if (destination.equalsIgnoreCase("Current")) {
                         cAccBal += amount;
